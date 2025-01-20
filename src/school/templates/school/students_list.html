@@ -1,4 +1,4 @@
-{% extends "school/base.html" %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block title %}Список учеников{% endblock %}
@@ -7,6 +7,9 @@
   <ul>
   {% for student in object_list %}
     <li>{{ student.name }} {{ student.group }} <br> Преподаватель: {{ student.teacher.name }} {{ student.teacher.subject }}</li>
+    {% for object in student.student_teacher.all %}
+      <p>{{ object.teacher.name }}  ({{ object.teacher.subject }})</p>
+    {% endfor %}
   {% endfor %}
   </ul>
 </div>
